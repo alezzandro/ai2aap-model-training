@@ -1,4 +1,4 @@
-#!/bin/python
+#!/bin/python3
 import requests
 
 def create_servicenow_incident(instance_url, username, password, description, host):
