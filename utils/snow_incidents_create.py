@@ -1,5 +1,6 @@
 #!/bin/python3
 import requests
+import os
 
 def create_servicenow_incident(instance_url, username, password, description, host):
     """Creates a new incident in ServiceNow with the given description.
@@ -38,9 +39,9 @@ def create_servicenow_incident(instance_url, username, password, description, ho
 
 
 # Example Usage:
-instance_url = "https://YOUR_INSTANCE.service-now.com"
-username = "alejandro.mascall"
-password = "YOUR_PASSWORD"
+instance_url = os.environ.get('SNOW_URL', "https://YOUR_INSTANCE.service-now.com")
+username = os.environ.get('SNOW_USER', "alejandro.mascall")
+password = os.environ.get("SNOW_PASSWORD", 'your password)')
 descriptions = [ ["Database performance is degraded in the test environment, maybe it's a network congestion or storage latency, please investigate", "node2"],
                 ["Virtual machine 'develop15' failing due to insufficient disk space. Please do cleanup or archival actions or evaluate storage expansion options.","node3"], 
                 ["Website performance is significantly degraded after upgrade, please rollback to the previous version and investigate the issue.","node1"]]
